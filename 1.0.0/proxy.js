@@ -10,10 +10,10 @@ require('http').createServer(function(req,res){
 	try{
 		if(!hostEndPort[host] || !hostEndPort[host].Expires || hostEndPort[host].Expires < nowtime){
 			if(process.env[host]){
-				if(!hostEndPort[host]){console.log("host:" + host + " endport >>> " + process.env[host])}
+				if(!hostEndPort[host]){console.log("new proxy hostname:" + host + " >>> " + process.env[host])}
 				hostEndPort[host] = {EndPort:process.env[host],Expires:nowtime + 86400};
 			}else{
-				console.log('host:'+host+' endport not found!');
+				console.log('new proxy hostname:' + host + ' >>> -none');
 				hostEndPort[host] = {EndPort:'',Expires:nowtime + 30};
 			}
 		}
