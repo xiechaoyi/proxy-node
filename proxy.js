@@ -10,7 +10,7 @@ require('http').createServer(function(req,res){
 	try{
 		if(!hostEndPort[host] || !hostEndPort[host].Expires || hostEndPort[host].Expires < nowtime){
 			if(process.env[host]){
-				if(!hostEndPort[host]){console.log("host:" + key + " endport >>> " + process.env[host])}
+				if(!hostEndPort[host]){console.log("host:" + host + " endport >>> " + process.env[host])}
 				hostEndPort[host] = {EndPort:process.env[host],Expires:nowtime + 86400};
 			}else{
 				console.log('host:'+host+' endport not found!');
@@ -25,4 +25,4 @@ require('http').createServer(function(req,res){
 		}
 	}catch(e){}
 }).listen(80);
-console.log("node proxy listening on port 80");
+console.log("proxy-node listen on port 80");
